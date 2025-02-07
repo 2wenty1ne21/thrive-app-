@@ -45,40 +45,6 @@
             text-align: center;
         }
 
-        /* Bandeau noir */
-        .pdf-header {
-            background-color: black;
-            color: white;
-            padding: 15px;
-            font-size: 1.5em;
-            font-weight: bold;
-            text-align: center;
-            border-radius: 8px 8px 0 0;
-            width: 100%;
-        }
-
-        /* Conteneur des boutons de zoom */
-        .zoom-controls {
-            background-color: black;
-            padding: 10px;
-            text-align: center;
-            border-radius: 0 0 8px 8px;
-        }
-
-        .zoom-btn {
-            background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 4px;
-            margin: 5px;
-        }
-        .zoom-btn:hover {
-            background-color: #218838;
-        }
-
         /* Ajustement du PDF */
         .pdf-container iframe {
             width: 100%;
@@ -113,17 +79,6 @@
 </div>
 
 <div class="pdf-container" id="pdfContainer">
-    <!-- Bandeau noir avec le titre -->
-    <div class="pdf-header">
-        Thrive Landing Page
-    </div>
-
-    <!-- Conteneur noir avec les boutons de zoom -->
-    <div class="zoom-controls">
-        <button class="zoom-btn" id="zoomInBtn">Zoom +</button>
-        <button class="zoom-btn" id="zoomOutBtn">Zoom -</button>
-    </div>
-
     <!-- PDF intégré avec un iframe -->
     <iframe id="pdfIframe" 
             src="https://drive.google.com/file/d/1QvtPH3n6l9gVeHAHzDCZP7V3XyoS7A0R/preview" 
@@ -138,33 +93,6 @@
     const acceptButton = document.getElementById('acceptButton');
     const landingPage = document.getElementById('landingPage');
     const pdfContainer = document.getElementById('pdfContainer');
-
-    // Variables de zoom
-    const pdfIframe = document.getElementById('pdfIframe');
-    const zoomInBtn = document.getElementById('zoomInBtn');
-    const zoomOutBtn = document.getElementById('zoomOutBtn');
-    
-    let currentWidth = 100; // Valeur initiale de la largeur
-
-    // Fonction pour zoomer
-    function zoomIn() {
-        if (currentWidth < 200) { // Limite maximale à 200%
-            currentWidth += 10;
-            pdfIframe.style.width = currentWidth + '%';
-        }
-    }
-
-    // Fonction pour dézoomer
-    function zoomOut() {
-        if (currentWidth > 50) { // Limite minimale à 50%
-            currentWidth -= 10;
-            pdfIframe.style.width = currentWidth + '%';
-        }
-    }
-
-    // Ajouter les événements aux boutons de zoom
-    zoomInBtn.addEventListener('click', zoomIn);
-    zoomOutBtn.addEventListener('click', zoomOut);
 
     // Activer le bouton une fois la case cochée
     acceptCheckbox.addEventListener('change', function() {
