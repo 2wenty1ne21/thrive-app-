@@ -40,14 +40,20 @@
         .pdf-container {
             display: none;
             margin-top: 20px;
+            text-align: center; /* Centrage du contenu */
         }
-        .pdf-container iframe {
-            width: 100%;
-            height: 600px;
-            transition: width 0.3s ease;
+        .pdf-header {
+            background-color: black;
+            color: white;
+            padding: 15px;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
         }
         .zoom-controls {
-            margin-bottom: 10px;
+            margin: 15px 0;
+            text-align: center;
         }
         .zoom-btn {
             background-color: #28a745;
@@ -57,9 +63,15 @@
             font-size: 1em;
             cursor: pointer;
             border-radius: 4px;
+            margin: 5px;
         }
         .zoom-btn:hover {
             background-color: #218838;
+        }
+        .pdf-container iframe {
+            width: 100%;
+            height: 600px;
+            transition: width 0.3s ease;
         }
     </style>
 </head>
@@ -88,7 +100,10 @@
 </div>
 
 <div class="pdf-container" id="pdfContainer">
-    <h1>Consulter le PDF</h1>
+    <!-- Bandeau avec fond noir -->
+    <div class="pdf-header">
+        Thrive Landing Page
+    </div>
     
     <!-- Contrôles de zoom -->
     <div class="zoom-controls">
