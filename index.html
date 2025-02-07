@@ -44,6 +44,22 @@
         .pdf-container iframe {
             width: 100%;
             height: 600px;
+            transition: width 0.3s ease; /* Transition douce pour l'agrandissement/retrait */
+        }
+        .zoom-controls {
+            margin-bottom: 10px;
+        }
+        .zoom-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .zoom-btn:hover {
+            background-color: #218838;
         }
     </style>
 </head>
@@ -69,7 +85,15 @@
 
 <div class="pdf-container" id="pdfContainer">
     <h1>Consulter le PDF</h1>
-    <iframe src="https://cdn.jsdelivr.net/gh/2wenty1ne21/thrive-app-/main/FR%20Thrive%20Landing%20page.pdf" width="100%" height="600px"></iframe>
+    
+    <!-- Contrôles de zoom -->
+    <div class="zoom-controls">
+        <button class="zoom-btn" id="zoomInBtn">Zoom +</button>
+        <button class="zoom-btn" id="zoomOutBtn">Zoom -</button>
+    </div>
+    
+    <!-- PDF intégré avec un iframe -->
+    <iframe id="pdfIframe" src="https://cdn.jsdelivr.net/gh/2wenty1ne21/thrive-app-/main/FR%20Thrive%20Landing%20page.pdf" width="100%" height="600px"></iframe>
 </div>
 
 <script>
@@ -78,6 +102,34 @@
     const acceptButton = document.getElementById('acceptButton');
     const landingPage = document.getElementById('landingPage');
     const pdfContainer = document.getElementById('pdfContainer');
+
+    // Variables de zoom
+    const pdfIframe = document.getElementById('pdfIframe');
+    const zoomInBtn = document.getElementById('zoomInBtn');
+    const zoomOutBtn = document.getElementById('zoomOutBtn');
+    
+    // Valeur initiale de la largeur
+    let currentWidth = 100;
+
+    // Fonction pour zoomer
+    function zoomIn() {
+        if (currentWidth < 200) { // Limite maximale à 200%
+            currentWidth += 10;
+            pdfIframe.style.width = currentWidth + '%';
+        }
+    }
+
+    // Fonction pour dézoomer
+    function zoomOut() {
+        if (currentWidth > 50) { // Limite minimale à 50%
+            currentWidth -= 10;
+            pdfIframe.style.width = currentWidth + '%';
+        }
+    }
+
+    // Ajouter les événements aux boutons de zoom
+    zoomInBtn.addEventListener('click', zoomIn);
+    zoomOutBtn.addEventListener('click', zoomOut);
 
     // Activer le bouton une fois la case cochée
     acceptCheckbox.addEventListener('change', function() {
