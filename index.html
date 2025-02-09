@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy</title>
+  <title>Politique de Confidentialité</title>
   <style>
-    /* Reset margins/padding for the entire page */
+    /* Réinitialisation des marges et du padding pour toute la page */
     html, body {
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-      background-color: black; /* Set background color to black */
+      background-color: black; /* Fond noir pour masquer les bordures blanches */
     }
     
-    /* Landing page container styling */
+    /* Style du conteneur de la page d'accueil */
     .container {
       width: 90%;
       max-width: 800px;
@@ -43,17 +43,17 @@
       background-color: #0056b3;
     }
     
-    /* PDF container takes full viewport width and removes extra margins */
+    /* Le conteneur du PDF prend toute la largeur et la hauteur de la fenêtre et supprime les marges supplémentaires */
     .pdf-container {
       display: none;
-      margin: 0;          /* Remove any margin */
-      padding: 0;         /* Remove any padding */
-      width: 100vw;       /* Full viewport width */
-      height: 100vh;      /* Full viewport height */
-      background-color: black; /* Set background color to black */
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: black; /* Fond noir */
     }
     
-    /* The iframe styling removes any borders or outlines */
+    /* L'iframe n'affiche aucune bordure ou outline */
     .pdf-container iframe {
       display: block;
       width: 100%;
@@ -65,27 +65,29 @@
 </head>
 <body>
 
+  <!-- Page d'accueil -->
   <div class="container" id="landingPage">
-    <h1>Privacy Policy</h1>
+    <h1>Politique de Confidentialité</h1>
     <p>
-      By clicking this link, you access our 
+      En cliquant sur ce lien, vous accédez à notre 
       <a href="https://drive.google.com/file/d/1MNWys258Bn9VaDxjpAY8VSZMY0S4Ggtj/preview" target="_blank">
-        Privacy Policy
-      </a> 
-      which must be accepted in order to access the content. If you do not wish to read it now, you may accept it immediately.
+        Politique de Confidentialité
+      </a>
+      qu'il est obligatoire d'accepter pour accéder au contenu. Si vous ne souhaitez pas la lire maintenant, vous pouvez l'accepter immédiatement.
     </p>
     <p>
-      By accepting, you authorize the processing of your personal data according to our terms.
+      En acceptant, vous autorisez le traitement de vos données personnelles selon nos termes.
     </p>
     <form id="privacyForm">
       <label for="accept">
-        <input type="checkbox" name="accept" id="accept" required> I accept the Privacy Policy.
+        <input type="checkbox" name="accept" id="accept" required> J'accepte la Politique de Confidentialité.
       </label>
       <br><br>
-      <button type="submit" class="btn" id="acceptButton" disabled>Access Content</button>
+      <button type="submit" class="btn" id="acceptButton" disabled>Accéder au contenu</button>
     </form>
   </div>
 
+  <!-- Conteneur du PDF -->
   <div class="pdf-container" id="pdfContainer">
     <iframe id="pdfIframe" 
             src="https://drive.google.com/file/d/1QvtPH3n6l9gVeHAHzDCZP7V3XyoS7A0R/preview">
@@ -99,12 +101,12 @@
     const landingPage = document.getElementById('landingPage');
     const pdfContainer = document.getElementById('pdfContainer');
 
-    // Enable the button when the checkbox is checked
+    // Active le bouton dès que la case est cochée
     acceptCheckbox.addEventListener('change', function() {
       acceptButton.disabled = !this.checked;
     });
 
-    // On form submission, hide the landing page and show the PDF container
+    // Lors de la soumission du formulaire, cache la page d'accueil et affiche le conteneur du PDF
     form.addEventListener('submit', function(event) {
       event.preventDefault();
       landingPage.style.display = 'none';
